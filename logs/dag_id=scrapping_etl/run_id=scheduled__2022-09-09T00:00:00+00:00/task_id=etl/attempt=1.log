@@ -1,0 +1,33 @@
+[2022-09-11T05:00:48.818+0000] {taskinstance.py:1171} INFO - Dependencies all met for <TaskInstance: scrapping_etl.etl scheduled__2022-09-09T00:00:00+00:00 [queued]>
+[2022-09-11T05:00:48.828+0000] {taskinstance.py:1171} INFO - Dependencies all met for <TaskInstance: scrapping_etl.etl scheduled__2022-09-09T00:00:00+00:00 [queued]>
+[2022-09-11T05:00:48.829+0000] {taskinstance.py:1368} INFO - 
+--------------------------------------------------------------------------------
+[2022-09-11T05:00:48.830+0000] {taskinstance.py:1369} INFO - Starting attempt 1 of 2
+[2022-09-11T05:00:48.831+0000] {taskinstance.py:1370} INFO - 
+--------------------------------------------------------------------------------
+[2022-09-11T05:00:48.841+0000] {taskinstance.py:1389} INFO - Executing <Task(PythonOperator): etl> on 2022-09-09 00:00:00+00:00
+[2022-09-11T05:00:48.847+0000] {standard_task_runner.py:52} INFO - Started process 173 to run task
+[2022-09-11T05:00:48.856+0000] {standard_task_runner.py:79} INFO - Running: ['***', 'tasks', 'run', 'scrapping_etl', 'etl', 'scheduled__2022-09-09T00:00:00+00:00', '--job-id', '7', '--raw', '--subdir', 'DAGS_FOLDER/job_dag.py', '--cfg-path', '/tmp/tmpx13_7vzk', '--error-file', '/tmp/tmpnddk_ln5']
+[2022-09-11T05:00:48.858+0000] {standard_task_runner.py:80} INFO - Job 7: Subtask etl
+[2022-09-11T05:00:48.916+0000] {task_command.py:371} INFO - Running <TaskInstance: scrapping_etl.etl scheduled__2022-09-09T00:00:00+00:00 [running]> on host 71464bd58847
+[2022-09-11T05:00:49.010+0000] {taskinstance.py:1583} INFO - Exporting the following env vars:
+AIRFLOW_CTX_DAG_EMAIL=c.mendozar@outlook.com
+AIRFLOW_CTX_DAG_OWNER=***
+AIRFLOW_CTX_DAG_ID=scrapping_etl
+AIRFLOW_CTX_TASK_ID=etl
+AIRFLOW_CTX_EXECUTION_DATE=2022-09-09T00:00:00+00:00
+AIRFLOW_CTX_TRY_NUMBER=1
+AIRFLOW_CTX_DAG_RUN_ID=scheduled__2022-09-09T00:00:00+00:00
+[2022-09-11T05:00:51.906+0000] {warnings.py:110} WARNING - /opt/***/dags/etl.py:26: GuessedAtParserWarning: No parser was explicitly specified, so I'm using the best available HTML parser for this system ("lxml"). This usually isn't a problem, but if you run this code on another system, or in a different virtual environment, it may use a different parser and behave differently.
+
+The code that caused this warning is on line 26 of the file /opt/***/dags/etl.py. To get rid of this warning, pass the additional argument 'features="lxml"' to the BeautifulSoup constructor.
+
+  job = BeautifulSoup(str(raw_job))
+
+[2022-09-11T05:01:20.750+0000] {logging_mixin.py:115} INFO - TOTAL DOCS TO INSERT: 134 jobs
+[2022-09-11T05:01:20.758+0000] {logging_mixin.py:115} INFO - TOTAL INSERTED: 80 jobs
+[2022-09-11T05:01:20.759+0000] {logging_mixin.py:115} INFO - TOTAL NOT INSERTED: 54 jobs
+[2022-09-11T05:01:20.760+0000] {python.py:173} INFO - Done. Returned value was: None
+[2022-09-11T05:01:20.783+0000] {taskinstance.py:1412} INFO - Marking task as SUCCESS. dag_id=scrapping_etl, task_id=etl, execution_date=20220909T000000, start_date=20220911T050048, end_date=20220911T050120
+[2022-09-11T05:01:20.948+0000] {local_task_job.py:156} INFO - Task exited with return code 0
+[2022-09-11T05:01:20.980+0000] {local_task_job.py:279} INFO - 0 downstream tasks scheduled from follow-on schedule check

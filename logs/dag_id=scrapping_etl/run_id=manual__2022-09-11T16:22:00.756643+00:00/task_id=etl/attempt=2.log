@@ -1,0 +1,108 @@
+[2022-09-11T16:27:06.783+0000] {taskinstance.py:1171} INFO - Dependencies all met for <TaskInstance: scrapping_etl.etl manual__2022-09-11T16:22:00.756643+00:00 [queued]>
+[2022-09-11T16:27:06.790+0000] {taskinstance.py:1171} INFO - Dependencies all met for <TaskInstance: scrapping_etl.etl manual__2022-09-11T16:22:00.756643+00:00 [queued]>
+[2022-09-11T16:27:06.791+0000] {taskinstance.py:1368} INFO - 
+--------------------------------------------------------------------------------
+[2022-09-11T16:27:06.792+0000] {taskinstance.py:1369} INFO - Starting attempt 2 of 2
+[2022-09-11T16:27:06.793+0000] {taskinstance.py:1370} INFO - 
+--------------------------------------------------------------------------------
+[2022-09-11T16:27:06.801+0000] {taskinstance.py:1389} INFO - Executing <Task(PythonOperator): etl> on 2022-09-11 16:22:00.756643+00:00
+[2022-09-11T16:27:06.806+0000] {standard_task_runner.py:52} INFO - Started process 22801 to run task
+[2022-09-11T16:27:06.811+0000] {standard_task_runner.py:79} INFO - Running: ['***', 'tasks', 'run', 'scrapping_etl', 'etl', 'manual__2022-09-11T16:22:00.756643+00:00', '--job-id', '12', '--raw', '--subdir', 'DAGS_FOLDER/job_dag.py', '--cfg-path', '/tmp/tmptk8_bxki', '--error-file', '/tmp/tmpjfef_pyk']
+[2022-09-11T16:27:06.813+0000] {standard_task_runner.py:80} INFO - Job 12: Subtask etl
+[2022-09-11T16:27:06.858+0000] {task_command.py:371} INFO - Running <TaskInstance: scrapping_etl.etl manual__2022-09-11T16:22:00.756643+00:00 [running]> on host 71464bd58847
+[2022-09-11T16:27:06.901+0000] {taskinstance.py:1583} INFO - Exporting the following env vars:
+AIRFLOW_CTX_DAG_EMAIL=c.mendozar@outlook.com
+AIRFLOW_CTX_DAG_OWNER=***
+AIRFLOW_CTX_DAG_ID=scrapping_etl
+AIRFLOW_CTX_TASK_ID=etl
+AIRFLOW_CTX_EXECUTION_DATE=2022-09-11T16:22:00.756643+00:00
+AIRFLOW_CTX_TRY_NUMBER=2
+AIRFLOW_CTX_DAG_RUN_ID=manual__2022-09-11T16:22:00.756643+00:00
+[2022-09-11T16:27:09.836+0000] {logging_mixin.py:115} INFO - 2022-09-11
+[2022-09-11T16:27:09.837+0000] {taskinstance.py:1902} ERROR - Task failed with exception
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/operators/python.py", line 171, in execute
+    return_value = self.execute_callable()
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/operators/python.py", line 189, in execute_callable
+    return self.python_callable(*self.op_args, **self.op_kwargs)
+  File "/opt/airflow/dags/etl.py", line 20, in etl_jobs
+    print('datetime:', datetime(day))
+TypeError: 'module' object is not callable
+[2022-09-11T16:27:09.847+0000] {taskinstance.py:1412} INFO - Marking task as FAILED. dag_id=scrapping_etl, task_id=etl, execution_date=20220911T162200, start_date=20220911T162706, end_date=20220911T162709
+[2022-09-11T16:27:09.858+0000] {warnings.py:110} WARNING - /home/***/.local/lib/python3.7/site-packages/***/utils/email.py:119: PendingDeprecationWarning: Fetching SMTP credentials from configuration variables will be deprecated in a future release. Please set credentials using a connection instead.
+  send_mime_email(e_from=mail_from, e_to=recipients, mime_msg=msg, conn_id=conn_id, dryrun=dryrun)
+
+[2022-09-11T16:27:09.859+0000] {configuration.py:562} WARNING - section/key [smtp/smtp_user] not found in config
+[2022-09-11T16:27:09.860+0000] {email.py:228} INFO - Email alerting: attempt 1
+[2022-09-11T16:27:09.865+0000] {configuration.py:562} WARNING - section/key [smtp/smtp_user] not found in config
+[2022-09-11T16:27:09.866+0000] {email.py:228} INFO - Email alerting: attempt 1
+[2022-09-11T16:27:09.867+0000] {taskinstance.py:1957} ERROR - Failed to send email to: ['c.mendozar@outlook.com']
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/models/taskinstance.py", line 1463, in _run_raw_task
+    self._execute_task_with_callbacks(context, test_mode)
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/models/taskinstance.py", line 1610, in _execute_task_with_callbacks
+    result = self._execute_task(context, task_orig)
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/models/taskinstance.py", line 1671, in _execute_task
+    result = execute_callable(context=context)
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/operators/python.py", line 171, in execute
+    return_value = self.execute_callable()
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/operators/python.py", line 189, in execute_callable
+    return self.python_callable(*self.op_args, **self.op_kwargs)
+  File "/opt/airflow/dags/etl.py", line 20, in etl_jobs
+    print('datetime:', datetime(day))
+TypeError: 'module' object is not callable
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/models/taskinstance.py", line 2339, in email_alert
+    send_email(task.email, subject, html_content)
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/utils/email.py", line 71, in send_email
+    **kwargs,
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/utils/email.py", line 119, in send_email_smtp
+    send_mime_email(e_from=mail_from, e_to=recipients, mime_msg=msg, conn_id=conn_id, dryrun=dryrun)
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/utils/email.py", line 230, in send_mime_email
+    smtp_conn = _get_smtp_connection(smtp_host, smtp_port, smtp_timeout, smtp_ssl)
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/utils/email.py", line 264, in _get_smtp_connection
+    else smtplib.SMTP(host=host, port=port, timeout=timeout)
+  File "/usr/local/lib/python3.7/smtplib.py", line 251, in __init__
+    (code, msg) = self.connect(host, port)
+  File "/usr/local/lib/python3.7/smtplib.py", line 336, in connect
+    self.sock = self._get_socket(host, port, self.timeout)
+  File "/usr/local/lib/python3.7/smtplib.py", line 307, in _get_socket
+    self.source_address)
+  File "/usr/local/lib/python3.7/socket.py", line 728, in create_connection
+    raise err
+  File "/usr/local/lib/python3.7/socket.py", line 716, in create_connection
+    sock.connect(sa)
+OSError: [Errno 99] Cannot assign requested address
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/models/taskinstance.py", line 1955, in handle_failure
+    self.email_alert(error, task)
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/models/taskinstance.py", line 2341, in email_alert
+    send_email(task.email, subject, html_content_err)
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/utils/email.py", line 71, in send_email
+    **kwargs,
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/utils/email.py", line 119, in send_email_smtp
+    send_mime_email(e_from=mail_from, e_to=recipients, mime_msg=msg, conn_id=conn_id, dryrun=dryrun)
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/utils/email.py", line 230, in send_mime_email
+    smtp_conn = _get_smtp_connection(smtp_host, smtp_port, smtp_timeout, smtp_ssl)
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/utils/email.py", line 264, in _get_smtp_connection
+    else smtplib.SMTP(host=host, port=port, timeout=timeout)
+  File "/usr/local/lib/python3.7/smtplib.py", line 251, in __init__
+    (code, msg) = self.connect(host, port)
+  File "/usr/local/lib/python3.7/smtplib.py", line 336, in connect
+    self.sock = self._get_socket(host, port, self.timeout)
+  File "/usr/local/lib/python3.7/smtplib.py", line 307, in _get_socket
+    self.source_address)
+  File "/usr/local/lib/python3.7/socket.py", line 728, in create_connection
+    raise err
+  File "/usr/local/lib/python3.7/socket.py", line 716, in create_connection
+    sock.connect(sa)
+OSError: [Errno 99] Cannot assign requested address
+[2022-09-11T16:27:09.877+0000] {standard_task_runner.py:97} ERROR - Failed to execute job 12 for task etl ('module' object is not callable; 22801)
+[2022-09-11T16:27:09.904+0000] {local_task_job.py:156} INFO - Task exited with return code 1
+[2022-09-11T16:27:09.924+0000] {local_task_job.py:279} INFO - 0 downstream tasks scheduled from follow-on schedule check
