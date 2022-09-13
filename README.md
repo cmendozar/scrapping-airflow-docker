@@ -1,2 +1,2 @@
 # scrapping-airflow-docker
-Aplicación para ir bajando los trabajos que se van subiendo a GetOnBoard con una aplicación en airflow y usando docker. Finalidad de aprender a utilizar airflow y docker con un etl real. 
+Aplicación para ir bajando los trabajos que se van subiendo a GetOnBoard con Beautiful Soap utilizando airflow como orquestador y usando docker para contenedor. Finalidad de aprender a utilizar airflow y docker con un etl real. 
